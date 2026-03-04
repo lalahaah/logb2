@@ -71,16 +71,21 @@ class _MainNavigationState extends State<MainNavigation> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(Icons.home_outlined, Icons.home, '홈', 0),
-              _buildNavItem(Icons.people_outline, Icons.people, '클라이언트', 1),
+              _buildNavItem(Icons.home_outlined, Icons.home, 'Home', 0),
+              _buildNavItem(Icons.people_outline, Icons.people, 'Clients', 1),
               const SizedBox(width: 48), // Space for FAB
               _buildNavItem(
                 Icons.calendar_today_outlined,
                 Icons.calendar_today,
-                '캘린더',
+                'Calendar',
                 3,
               ),
-              _buildNavItem(Icons.insights_outlined, Icons.insights, '인사이트', 4),
+              _buildNavItem(
+                Icons.insights_outlined,
+                Icons.insights,
+                'Insights',
+                4,
+              ),
             ],
           ),
         ),
@@ -108,7 +113,7 @@ class _MainNavigationState extends State<MainNavigation> {
             color: isSelected
                 ? const Color(0xFF135BEC)
                 : const Color(0xFF94A3B8), // text-slate-400
-            size: 26,
+            size: 24,
           ),
           const SizedBox(height: 4),
           Text(

@@ -169,7 +169,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ]),
 
             _buildSectionHeader(l10n.translate('settings_subscription')),
-            _buildSubscriptionCard(),
+            _buildSubscriptionCard(l10n),
 
             Padding(
               padding: const EdgeInsets.symmetric(
@@ -307,7 +307,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildSubscriptionCard() {
+  Widget _buildSubscriptionCard(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Container(
@@ -335,9 +335,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   size: 20,
                 ), // blue-400
                 const SizedBox(width: 8),
-                const Text(
-                  'Premium Plan',
-                  style: TextStyle(
+                Text(
+                  l10n.translate('settings_premium_plan'),
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Color(0xFFF1F5F9),
@@ -352,9 +352,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Unlimited meetings & AI summaries.',
-              style: TextStyle(
+            Text(
+              l10n.translate('settings_premium_desc'),
+              style: const TextStyle(
                 color: Color(0xFFCBD5E1),
                 fontSize: 13,
               ), // slate-300
@@ -363,9 +363,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Renews Oct 15, 2024',
-                  style: TextStyle(
+                Text(
+                  l10n.translate('settings_renews_on'),
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     color: Color(0xFF94A3B8), // slate-400
                     fontSize: 13,
@@ -386,9 +386,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
-                    'Manage Plan',
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                  child: Text(
+                    l10n.translate('settings_manage_plan'),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ],

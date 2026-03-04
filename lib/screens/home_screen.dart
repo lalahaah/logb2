@@ -189,9 +189,9 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 6),
-                            const Text(
-                              'Upcoming Next',
-                              style: TextStyle(
+                            Text(
+                              l10n.translate('home_upcoming'),
+                              style: const TextStyle(
                                 color: Color(0xFF135BEC),
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,

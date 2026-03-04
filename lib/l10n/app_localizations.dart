@@ -67,6 +67,10 @@ class AppLocalizations {
       'settings_connect': '연동하기',
       'settings_preferences': '환경 설정',
       'settings_subscription': '구독',
+      'settings_premium_plan': '프리미엄 요금제',
+      'settings_premium_desc': '무제한 미팅 및 AI 요약 지원',
+      'settings_renews_on': '다음 결제일: 2024년 10월 15일',
+      'settings_manage_plan': '요금제 관리',
     },
     'en': {
       'app_title': 'log:B',
@@ -125,6 +129,10 @@ class AppLocalizations {
       'settings_connect': 'Connect',
       'settings_preferences': 'Preferences',
       'settings_subscription': 'Subscription',
+      'settings_premium_plan': 'Premium Plan',
+      'settings_premium_desc': 'Unlimited meetings & AI summaries.',
+      'settings_renews_on': 'Renews Oct 15, 2024',
+      'settings_manage_plan': 'Manage Plan',
     },
   };
 

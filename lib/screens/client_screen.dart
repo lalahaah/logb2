@@ -63,7 +63,30 @@ class ClientScreen extends StatelessWidget {
             ),
             child: IconButton(
               icon: const Icon(Icons.add, color: Color(0xFF135BEC), size: 20),
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      backgroundColor: const Color(0xFF1E293B),
+                      title: Text(
+                        l10n.translate('client_add'),
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      content: const Text(
+                        '거래처를 등록할 수 있는 팝업',
+                        style: TextStyle(color: Color(0xFFCBD5E1)),
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('취소'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
               constraints: const BoxConstraints(),
               padding: const EdgeInsets.all(8),
             ),
@@ -94,13 +117,6 @@ class ClientScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color(0xFF135BEC),
-        tooltip: l10n.translate('client_add'),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        child: const Icon(Icons.add, color: Colors.white),
       ),
       body: Column(
         children: [

@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'settings_screen.dart';
 import 'main_navigation.dart';
 import '../l10n/app_localizations.dart';
 
-class ScheduleScreen extends StatefulWidget {
+class ScheduleScreen extends StatelessWidget {
   const ScheduleScreen({super.key});
-
-  @override
-  State<ScheduleScreen> createState() => _ScheduleScreenState();
-}
-
-class _ScheduleScreenState extends State<ScheduleScreen> {
-  DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedDay = _focusedDay;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -183,66 +168,122 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   Widget _buildCalendarHeader() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TableCalendar(
-        firstDay: DateTime.utc(2020, 1, 1),
-        lastDay: DateTime.utc(2030, 12, 31),
-        focusedDay: _focusedDay,
-        selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-        onDaySelected: (selectedDay, focusedDay) {
-          setState(() {
-            _selectedDay = selectedDay;
-            _focusedDay = focusedDay;
-          });
-        },
-        calendarStyle: const CalendarStyle(
-          defaultTextStyle: TextStyle(
-            color: Color(0xFFF1F5F9),
-            fontWeight: FontWeight.bold,
+      child: Column(
+        children: [
+          // Month Selector
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: const Icon(
+                  Icons.chevron_left,
+                  color: Color(0xFFF1F5F9),
+                ), // slate-100
+                onPressed: () {},
+              ),
+              const Text(
+                'October 2023',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Color(0xFFF1F5F9),
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.chevron_right, color: Color(0xFFF1F5F9)),
+                onPressed: () {},
+              ),
+            ],
           ),
-          weekendTextStyle: TextStyle(
-            color: Color(0xFF94A3B8),
-            fontWeight: FontWeight.bold,
+          const SizedBox(height: 8),
+
+          // Days Row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day) {
+              return Expanded(
+                child: Text(
+                  day,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF94A3B8), // slate-400
+                  ),
+                ),
+              );
+            }).toList(),
           ),
-          outsideTextStyle: TextStyle(color: Color(0xFF475569)),
-          selectedDecoration: BoxDecoration(
-            color: Color(0xFF135BEC),
-            shape: BoxShape.circle,
+          const SizedBox(height: 8),
+
+          // Dates Row
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildDateItem('1', false, false),
+              _buildDateItem('2', false, false),
+              _buildDateItem('3', false, true), // Dot
+              _buildDateItem('4', false, false),
+              _buildDateItem('5', true, false), // Selected
+              _buildDateItem('6', false, false),
+              _buildDateItem('7', false, false, isFaded: true),
+            ],
           ),
-          todayDecoration: BoxDecoration(
-            color: Color(0xFF1E293B),
-            shape: BoxShape.circle,
-          ),
-          todayTextStyle: TextStyle(
-            color: Color(0xFFF1F5F9),
-            fontWeight: FontWeight.bold,
-          ),
-          selectedTextStyle: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDateItem(
+    String numText,
+    bool isSelected,
+    bool hasDot, {
+    bool isFaded = false,
+  }) {
+    Color textColor = isSelected
+        ? Colors.white
+        : (isFaded
+              ? const Color(0xFF475569)
+              : const Color(0xFFCBD5E1)); // slate-600 : slate-300
+    Color bgColor = isSelected ? const Color(0xFF135BEC) : Colors.transparent;
+
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: const Color(0xFF135BEC).withOpacity(0.3),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : null,
         ),
-        headerStyle: const HeaderStyle(
-          formatButtonVisible: false,
-          titleCentered: true,
-          titleTextStyle: TextStyle(
-            color: Color(0xFFF1F5F9),
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-          leftChevronIcon: Icon(Icons.chevron_left, color: Color(0xFFF1F5F9)),
-          rightChevronIcon: Icon(Icons.chevron_right, color: Color(0xFFF1F5F9)),
-        ),
-        daysOfWeekStyle: const DaysOfWeekStyle(
-          weekdayStyle: TextStyle(
-            color: Color(0xFF94A3B8),
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          ),
-          weekendStyle: TextStyle(
-            color: Color(0xFF94A3B8),
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Column(
+          children: [
+            Text(
+              numText,
+              style: TextStyle(fontWeight: FontWeight.bold, color: textColor),
+            ),
+            const SizedBox(height: 4),
+            Container(
+              width: 4,
+              height: 4,
+              decoration: BoxDecoration(
+                color: isSelected
+                    ? Colors.white
+                    : (hasDot
+                          ? const Color(0xFF3B82F6)
+                          : Colors.transparent), // blue-500
+                shape: BoxShape.circle,
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -267,24 +308,24 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             children: [
               _buildTimelineEvent(
                 time: '09:00',
-                title: '내부 스탠드업 회의',
-                subtitle: '줌(Zoom)',
+                title: 'Team Standup',
+                subtitle: 'Zoom',
                 icon: Icons.videocam_outlined,
-                badgeLabel: '완료됨',
+                badgeLabel: 'Completed',
                 badgeColor: const Color(0xFF4ADE80), // green-400
                 badgeBgColor: const Color(0xFF14532D).withOpacity(0.3),
-                primaryButtonLabel: '관련 정보 보기',
+                primaryButtonLabel: 'View Notes',
                 isPrimaryButtonOutline: true,
               ),
               _buildTimelineEvent(
                 time: '10:00',
-                title: '삼성전자 미팅 (1차)',
-                subtitle: '삼성전자 서초사옥',
+                title: 'Meeting with Acme Corp',
+                subtitle: '120 Business Rd.',
                 icon: Icons.location_on_outlined,
-                badgeLabel: '지난 일정',
+                badgeLabel: 'Past',
                 badgeColor: const Color(0xFF94A3B8), // slate-400
                 badgeBgColor: const Color(0xFF1E293B).withOpacity(0.5),
-                primaryButtonLabel: '준비 노트',
+                primaryButtonLabel: 'View Notes',
                 isPrimaryButtonOutline: true,
               ),
 

@@ -5,6 +5,7 @@ import 'client_screen.dart';
 import 'voice_screen.dart';
 import 'schedule_screen.dart';
 import 'insight_screen.dart';
+import '../l10n/app_localizations.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -32,6 +33,7 @@ class _MainNavigationState extends State<MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       body: IndexedStack(
@@ -71,19 +73,29 @@ class _MainNavigationState extends State<MainNavigation> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(Icons.home_outlined, Icons.home, 'Home', 0),
-              _buildNavItem(Icons.people_outline, Icons.people, 'Clients', 1),
+              _buildNavItem(
+                Icons.home_outlined,
+                Icons.home,
+                l10n.translate('nav_home'),
+                0,
+              ),
+              _buildNavItem(
+                Icons.people_outline,
+                Icons.people,
+                l10n.translate('nav_clients'),
+                1,
+              ),
               const SizedBox(width: 48), // Space for FAB
               _buildNavItem(
                 Icons.calendar_today_outlined,
                 Icons.calendar_today,
-                'Calendar',
+                l10n.translate('nav_calendar'),
                 3,
               ),
               _buildNavItem(
                 Icons.insights_outlined,
                 Icons.insights,
-                'Insights',
+                l10n.translate('nav_insights'),
                 4,
               ),
             ],

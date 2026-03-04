@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'settings_screen.dart';
 import 'main_navigation.dart';
+import '../l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       appBar: AppBar(
@@ -44,9 +46,9 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'log:B',
-              style: TextStyle(
+            Text(
+              l10n.translate('app_title'),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Color(0xFFF1F5F9),
@@ -104,9 +106,9 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildTodayAtAGlance(),
-            _buildQuickActions(),
-            _buildRecentActivity(),
+            _buildTodayAtAGlance(l10n),
+            _buildQuickActions(l10n),
+            _buildRecentActivity(l10n),
             const SizedBox(height: 100),
           ],
         ),
@@ -114,15 +116,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTodayAtAGlance() {
+  Widget _buildTodayAtAGlance(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Today at a Glance',
-            style: TextStyle(
+          Text(
+            l10n.translate('home_today_glance'),
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Color(0xFFF1F5F9),
@@ -195,13 +197,18 @@ class HomeScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Color(0xFF475569),
+                              size: 14,
+                            ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 8),
-                      const Text(
-                        'Acme Corp Pitch',
-                        style: TextStyle(
+                      const SizedBox(height: 16),
+                      Text(
+                        '삼성전자 미팅',
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFF1F5F9),
@@ -237,9 +244,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               icon: const Icon(Icons.directions, size: 18),
-                              label: const Text(
-                                'Directions',
-                                style: TextStyle(
+                              label: Text(
+                                l10n.translate('home_directions'),
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
                                 ),
@@ -266,9 +273,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               ),
                               icon: const Icon(Icons.notes, size: 18),
-                              label: const Text(
-                                'Prep Notes',
-                                style: TextStyle(
+                              label: Text(
+                                l10n.translate('home_prep_notes'),
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
                                 ),
@@ -306,15 +313,15 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildQuickActions() {
+  Widget _buildQuickActions(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
-            'Quick Actions',
-            style: TextStyle(
+            l10n.translate('home_quick_actions'),
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Color(0xFFF1F5F9),
@@ -328,20 +335,39 @@ class HomeScreen extends StatelessWidget {
             children: [
               _buildQuickActionCard(
                 icon: Icons.mic,
-                label: 'Record Note',
+                label: l10n.translate('action_record'),
                 isPrimary: true,
+                iconColor: const Color(0xFF60A5FA), // blue-400
+                bgColor: const Color(
+                  0xFF1E3A8A,
+                ).withOpacity(0.3), // blue-900/30
               ),
               const SizedBox(width: 12),
-              _buildQuickActionCard(icon: Icons.event, label: 'Add Meeting'),
+              _buildQuickActionCard(
+                icon: Icons.event,
+                label: l10n.translate('action_meeting'),
+                iconColor: const Color(0xFF4ADE80), // green-400
+                bgColor: const Color(
+                  0xFF14532D,
+                ).withOpacity(0.3), // green-900/30
+              ),
               const SizedBox(width: 12),
               _buildQuickActionCard(
                 icon: Icons.person_add_outlined,
-                label: 'New Client',
+                label: l10n.translate('action_client'),
+                iconColor: const Color(0xFFFDBA74), // orange-400
+                bgColor: const Color(
+                  0xFF7C2D12,
+                ).withOpacity(0.3), // orange-900/30
               ),
               const SizedBox(width: 12),
               _buildQuickActionCard(
                 icon: Icons.task_outlined,
-                label: 'Add Task',
+                label: l10n.translate('action_task'),
+                iconColor: const Color(0xFFC084FC), // purple-400
+                bgColor: const Color(
+                  0xFF581C87,
+                ).withOpacity(0.3), // purple-900/30
               ),
             ],
           ),
@@ -354,6 +380,8 @@ class HomeScreen extends StatelessWidget {
     required IconData icon,
     required String label,
     bool isPrimary = false,
+    Color? iconColor,
+    Color? bgColor,
   }) {
     return Container(
       width: 120,
@@ -385,16 +413,20 @@ class HomeScreen extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: isPrimary
-                  ? const Color(0xFF135BEC)
-                  : const Color(0xFF1E293B), // bg-slate-800
+              color:
+                  bgColor ??
+                  (isPrimary
+                      ? const Color(0xFF135BEC)
+                      : const Color(0xFF1E293B)), // bg-slate-800
               shape: BoxShape.circle,
             ),
             child: Icon(
               icon,
-              color: isPrimary
-                  ? Colors.white
-                  : const Color(0xFFCBD5E1), // text-slate-300
+              color:
+                  iconColor ??
+                  (isPrimary
+                      ? Colors.white
+                      : const Color(0xFFCBD5E1)), // text-slate-300
               size: 20,
             ),
           ),
@@ -415,7 +447,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildRecentActivity() {
+  Widget _buildRecentActivity(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -425,17 +457,17 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Text(
-                'Recent Activity',
-                style: TextStyle(
+              Text(
+                l10n.translate('home_recent_activity'),
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFFF1F5F9),
                 ),
               ),
-              const Text(
-                'View All',
-                style: TextStyle(
+              Text(
+                l10n.translate('home_view_all'),
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF135BEC),

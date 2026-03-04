@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'settings_screen.dart';
 import 'main_navigation.dart';
+import '../l10n/app_localizations.dart';
 
 class ClientScreen extends StatelessWidget {
   const ClientScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       appBar: AppBar(
@@ -41,9 +43,9 @@ class ClientScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'log:B',
-              style: TextStyle(
+            Text(
+              l10n.translate('app_title'),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Color(0xFFF1F5F9),
@@ -93,6 +95,13 @@ class ClientScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: const Color(0xFF135BEC),
+        tooltip: l10n.translate('client_add'),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
       body: Column(
         children: [
           // Search Bar
@@ -124,13 +133,16 @@ class ClientScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
-                _buildFilterChip('All', isSelected: true),
+                _buildFilterChip(
+                  l10n.translate('client_filter_all'),
+                  isSelected: true,
+                ),
                 const SizedBox(width: 8),
-                _buildFilterChip('Ready to Close'),
+                _buildFilterChip(l10n.translate('client_filter_recent')),
                 const SizedBox(width: 8),
-                _buildFilterChip('Follow-up'),
+                _buildFilterChip(l10n.translate('client_filter_name')),
                 const SizedBox(width: 8),
-                _buildFilterChip('Nurture'),
+                _buildFilterChip(l10n.translate('client_filter_key')),
               ],
             ),
           ),
@@ -142,6 +154,8 @@ class ClientScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               children: [
                 _buildClientCard(
+                  context,
+                  l10n,
                   name: 'John Doe',
                   company: 'Acme Corp',
                   initials: 'JD',
@@ -151,6 +165,8 @@ class ClientScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 _buildClientCard(
+                  context,
+                  l10n,
                   name: 'Sarah Jenkins',
                   company: 'TechNova Inc.',
                   initials: 'SJ',
@@ -160,6 +176,8 @@ class ClientScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 _buildClientCard(
+                  context,
+                  l10n,
                   name: 'Michael Ross',
                   company: 'Pearson Hardman',
                   initials: 'MR',
@@ -169,6 +187,8 @@ class ClientScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 _buildClientCard(
+                  context,
+                  l10n,
                   name: 'Emma Lewis',
                   company: 'Global Logistics',
                   initials: 'EL',
@@ -206,7 +226,9 @@ class ClientScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildClientCard({
+  Widget _buildClientCard(
+    BuildContext context,
+    AppLocalizations l10n, {
     required String name,
     required String company,
     required String initials,
@@ -214,79 +236,126 @@ class ClientScreen extends StatelessWidget {
     required Color badgeColor,
     required Color badgeBgColor,
   }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF0F172A), // slate-900
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFF1E293B)), // border-slate-800
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+    return InkWell(
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: const Color(0xFF1E293B),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
-        ],
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundColor: badgeBgColor,
-            child: Text(
-              initials,
-              style: TextStyle(color: badgeColor, fontWeight: FontWeight.bold),
+          builder: (context) {
+            return Container(
+              padding: const EdgeInsets.all(24),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.translate('client_details'),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    '$name ($company)',
+                    style: const TextStyle(
+                      color: Color(0xFFF1F5F9),
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 48), // Additional content can go here
+                ],
+              ),
+            );
+          },
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: const Color(0xFF0F172A), // slate-900
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: const Color(0xFF1E293B),
+          ), // border-slate-800
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 4,
+              offset: const Offset(0, 2),
             ),
-          ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Color(0xFFF1F5F9),
-                  ),
-                ),
-                Text(
-                  company,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF94A3B8),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: badgeBgColor,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  badgeLabel,
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                    color: badgeColor,
-                  ),
+          ],
+        ),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 24,
+              backgroundColor: badgeBgColor,
+              child: Text(
+                initials,
+                style: TextStyle(
+                  color: badgeColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Icon(
-                Icons.chevron_right,
-                color: Color(0xFF475569),
-              ), // slate-600
-            ],
-          ),
-        ],
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      color: Color(0xFFF1F5F9),
+                    ),
+                  ),
+                  Text(
+                    company,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: badgeBgColor,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Text(
+                    badgeLabel,
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                      color: badgeColor,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Icon(
+                  Icons.chevron_right,
+                  color: Color(0xFF475569),
+                ), // slate-600
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

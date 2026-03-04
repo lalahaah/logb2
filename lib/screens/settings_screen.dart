@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'main_navigation.dart';
+import '../l10n/app_localizations.dart';
+import '../providers/language_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,6 +16,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final languageProvider = Provider.of<LanguageProvider>(context);
+
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       appBar: AppBar(
@@ -47,9 +53,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'log:B',
-              style: TextStyle(
+            Text(
+              l10n.translate('app_title'),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Color(0xFFF1F5F9),
@@ -64,11 +70,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSectionHeader('Account'),
+            _buildSectionHeader(l10n.translate('settings_account')),
             _buildSectionGroup([
               _buildListTile(
                 icon: Icons.person,
-                title: 'Profile Information',
+                title: l10n.translate('settings_profile'),
                 subtitle: 'Sarah Jenkins',
                 trailing: const Icon(
                   Icons.chevron_right,
@@ -78,7 +84,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               _buildDivider(),
               _buildListTile(
                 icon: Icons.lock,
-                title: 'Password & Security',
+                title: l10n.translate('settings_security'),
                 trailing: const Icon(
                   Icons.chevron_right,
                   color: Color(0xFF475569), // slate-600
@@ -86,7 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ]),
 
-            _buildSectionHeader('Integrations'),
+            _buildSectionHeader(l10n.translate('settings_integrations')),
             _buildSectionGroup([
               _buildListTile(
                 icon: Icons.calendar_today,
@@ -94,10 +100,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 iconBgColor: const Color(
                   0xFF14532D,
                 ).withOpacity(0.3), // green-900/30
-                title: 'Google Calendar',
-                subtitle: 'Connected',
+                title: l10n.translate('settings_google_cal'),
+                subtitle: l10n.translate('settings_connected'),
                 subtitleColor: const Color(0xFF4ADE80), // green-400
-                trailing: _buildSmallButton('Manage', isPrimary: false),
+                trailing: _buildSmallButton(
+                  l10n.translate('settings_manage'),
+                  isPrimary: false,
+                ),
               ),
               _buildDivider(),
               _buildListTile(
@@ -106,17 +115,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 iconBgColor: const Color(
                   0xFF7C2D12,
                 ).withOpacity(0.3), // orange-900/30
-                title: 'Salesforce CRM',
-                subtitle: 'Not connected',
-                trailing: _buildSmallButton('Connect', isPrimary: true),
+                title: l10n.translate('settings_salesforce'),
+                subtitle: l10n.translate('settings_not_connected'),
+                trailing: _buildSmallButton(
+                  l10n.translate('settings_connect'),
+                  isPrimary: true,
+                ),
               ),
             ]),
 
-            _buildSectionHeader('Preferences'),
+            _buildSectionHeader(l10n.translate('settings_preferences')),
             _buildSectionGroup([
               _buildListTile(
                 icon: Icons.dark_mode,
-                title: 'Dark Mode',
+                title: l10n.translate('settings_dark_mode'),
                 trailing: Switch(
                   value: _darkMode,
                   onChanged: (val) {
@@ -129,17 +141,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               _buildDivider(),
               _buildListTile(
-                icon: Icons.mic,
-                title: 'Dictation Language',
-                subtitle: 'English (US)',
-                trailing: const Icon(
-                  Icons.chevron_right,
-                  color: Color(0xFF475569), // slate-600
+                icon: Icons.language,
+                title: l10n.translate('settings_language'),
+                subtitle: languageProvider.isKorean
+                    ? l10n.translate('settings_language_ko')
+                    : l10n.translate('settings_language_en'),
+                trailing: PopupMenuButton<String>(
+                  onSelected: (value) {
+                    languageProvider.changeLanguage(value);
+                  },
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 'ko',
+                      child: Text(l10n.translate('settings_language_ko')),
+                    ),
+                    PopupMenuItem(
+                      value: 'en',
+                      child: Text(l10n.translate('settings_language_en')),
+                    ),
+                  ],
+                  child: const Icon(
+                    Icons.chevron_right,
+                    color: Color(0xFF475569), // slate-600
+                  ),
                 ),
               ),
             ]),
 
-            _buildSectionHeader('Subscription'),
+            _buildSectionHeader(l10n.translate('settings_subscription')),
             _buildSubscriptionCard(),
 
             Padding(
@@ -163,9 +192,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ), // slate-700
                     ),
                   ),
-                  child: const Text(
-                    'Log Out',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  child: Text(
+                    l10n.translate('settings_logout'),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),

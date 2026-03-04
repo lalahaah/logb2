@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'settings_screen.dart';
 import 'main_navigation.dart';
+import '../l10n/app_localizations.dart';
 
 class VoiceScreen extends StatelessWidget {
   const VoiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       appBar: AppBar(
@@ -35,9 +37,9 @@ class VoiceScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'log:B',
-              style: TextStyle(
+            Text(
+              l10n.translate('app_title'),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Color(0xFFF1F5F9),

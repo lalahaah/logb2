@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'settings_screen.dart';
 import 'main_navigation.dart';
+import '../l10n/app_localizations.dart';
 
 class InsightScreen extends StatelessWidget {
   const InsightScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       backgroundColor: const Color(0xFF101622),
       appBar: AppBar(
@@ -41,9 +43,9 @@ class InsightScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            const Text(
-              'log:B',
-              style: TextStyle(
+            Text(
+              l10n.translate('app_title'),
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 color: Color(0xFFF1F5F9),
@@ -84,9 +86,10 @@ class InsightScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 8),
-            _buildSentimentTrend(),
-            _buildTopPriorities(),
-            _buildClientHealth(),
+            _buildSentimentTrend(l10n),
+            _buildTopPriorities(l10n),
+            _buildClientHealth(l10n),
+            _buildNotesTabs(context, l10n),
             const SizedBox(height: 100), // padding for bottom nav
           ],
         ),
@@ -94,15 +97,15 @@ class InsightScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSentimentTrend() {
+  Widget _buildSentimentTrend(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Sentiment Trend',
-            style: TextStyle(
+          Text(
+            l10n.translate('insight_sentiment_trend'),
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
               color: Color(0xFFF1F5F9),
@@ -129,9 +132,9 @@ class InsightScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Client Sentiment',
-                      style: TextStyle(
+                    Text(
+                      l10n.translate('insight_client_sentiment'),
+                      style: const TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF94A3B8), // slate-400
                         fontSize: 14,
@@ -148,9 +151,9 @@ class InsightScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text(
-                      'Positive',
-                      style: TextStyle(
+                    Text(
+                      l10n.translate('insight_positive'),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                         color: Color(0xFFF1F5F9), // slate-100
@@ -265,7 +268,7 @@ class InsightScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTopPriorities() {
+  Widget _buildTopPriorities(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Column(
@@ -274,9 +277,9 @@ class InsightScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Top Priorities',
-                style: TextStyle(
+              Text(
+                l10n.translate('insight_top_priorities'),
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                   color: Color(0xFFF1F5F9),
@@ -402,15 +405,15 @@ class InsightScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildClientHealth() {
+  Widget _buildClientHealth(AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Client Health',
-            style: TextStyle(
+          Text(
+            l10n.translate('insight_client_health'),
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 18,
               color: Color(0xFFF1F5F9),
@@ -422,7 +425,7 @@ class InsightScreen extends StatelessWidget {
               Expanded(
                 child: _buildHealthCard(
                   '85%',
-                  'Healthy',
+                  l10n.translate('insight_stable'),
                   '42 Accounts',
                   const Color(0xFF4ADE80), // green-400
                   const Color(0xFF14532D).withOpacity(0.3), // green-900/30
@@ -517,6 +520,100 @@ class InsightScreen extends StatelessWidget {
               color: Color(0xFF94A3B8), // slate-400
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNotesTabs(BuildContext context, AppLocalizations l10n) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: DefaultTabController(
+        length: 2,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TabBar(
+              labelColor: const Color(0xFF135BEC),
+              unselectedLabelColor: const Color(0xFF94A3B8),
+              indicatorColor: const Color(0xFF135BEC),
+              tabs: [
+                Tab(text: l10n.translate('insight_prep_notes')),
+                Tab(text: l10n.translate('insight_log_notes')),
+              ],
+            ),
+            const SizedBox(height: 16),
+            SizedBox(
+              height: 300,
+              child: TabBarView(
+                children: [_buildPrepNotesList(), _buildLogNotesList()],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPrepNotesList() {
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        _buildNoteCard('삼성전자 플랫폼 구축 관련 사전 조사', '2023.10.24', true),
+        _buildNoteCard('주요 경쟁사 분석 자료 요약', '2023.10.20', false),
+      ],
+    );
+  }
+
+  Widget _buildLogNotesList() {
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        _buildNoteCard('1차 미팅 완료 및 피드백 정리', '2023.10.25', true),
+        _buildNoteCard('요구사항 상세 리뷰 로그', '2023.10.18', false),
+      ],
+    );
+  }
+
+  Widget _buildNoteCard(String title, String date, bool hasAudio) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFF0F172A),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFF1E293B)),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Color(0xFFF1F5F9),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  date,
+                  style: const TextStyle(
+                    color: Color(0xFF94A3B8),
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (hasAudio)
+            const Icon(Icons.mic, color: Color(0xFF135BEC), size: 20)
+          else
+            const Icon(Icons.notes, color: Color(0xFF475569), size: 20),
         ],
       ),
     );

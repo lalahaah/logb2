@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Analytics &amp; Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 flex justify-center min-h-screen">
+<div class="w-full max-w-[400px] bg-white dark:bg-[#111318] flex flex-col min-h-screen relative shadow-2xl overflow-x-hidden">
+<div class="flex items-center px-4 pt-12 pb-4 justify-between sticky top-0 bg-white/90 dark:bg-[#111318]/90 backdrop-blur-md z-30 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-xl bg-primary flex items-center justify-center text-white shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">AI Insights</h1>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-symbols-outlined text-2xl">more_vert</span>
+</button>
+</div>
+<main class="flex-1 overflow-y-auto pb-28 pt-2">
+<section class="px-4 py-4">
+<h2 class="text-lg font-bold tracking-tight mb-3">Sentiment Trend</h2>
+<div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c1f27] p-5 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400">Client Sentiment</p>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">info</span>
+</button>
+</div>
+<div class="flex items-baseline gap-3 mb-6">
+<p class="text-3xl font-bold text-slate-900 dark:text-slate-100">Positive</p>
+<span class="inline-flex items-center gap-1 text-xs font-bold text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                            +15%
+                        </span>
+</div>
+<div class="relative h-32 w-full mb-3">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 40">
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.2" x1="0" x2="100" y1="10" y2="10"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.2" x1="0" x2="100" y1="20" y2="20"></line>
+<line class="text-slate-200 dark:text-slate-700" stroke="currentColor" stroke-dasharray="2 2" stroke-width="0.2" x1="0" x2="100" y1="30" y2="30"></line>
+<path d="M0,35 C20,30 30,25 50,20 C70,10 80,15 100,5 L100,40 L0,40 Z" fill="url(#sentiment-gradient)"></path>
+<path d="M0,35 C20,30 30,25 50,20 C70,10 80,15 100,5" fill="none" stroke="#135bec" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<defs>
+<linearGradient id="sentiment-gradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#135bec" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#135bec" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+</svg>
+</div>
+<div class="flex justify-between text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
+<span>W1</span>
+<span>W2</span>
+<span>W3</span>
+<span>W4</span>
+</div>
+</div>
+</section>
+<section class="px-4 py-4">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold tracking-tight">Top Priorities</h2>
+<span class="text-[10px] font-bold tracking-wide uppercase bg-primary/10 text-primary px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span> AI Generated
+                    </span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-start gap-3 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c1f27] shadow-sm">
+<div class="flex-shrink-0 size-10 rounded-xl bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-[20px]">priority_high</span>
+</div>
+<div>
+<h3 class="font-bold text-sm mb-1 text-slate-900 dark:text-slate-100">Finalize Acme Corp Contract</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Mentioned in 3 recent meetings. Client is waiting for the revised SLA terms before Q3 close.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c1f27] shadow-sm">
+<div class="flex-shrink-0 size-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center mt-0.5">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div>
+<h3 class="font-bold text-sm mb-1 text-slate-900 dark:text-slate-100">Follow up with TechGlobal</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Expressed interest in the premium tier upgrade during Tuesday's check-in.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 py-4">
+<h2 class="text-lg font-bold tracking-tight mb-3">Client Health</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c1f27] p-5 shadow-sm flex flex-col items-center justify-center text-center">
+<div class="size-14 rounded-full border-[5px] border-emerald-500/20 flex items-center justify-center mb-3 relative">
+<svg class="absolute inset-0 size-full -rotate-90 transform" viewBox="0 0 100 100">
+<circle class="text-emerald-500" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="42.4" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<span class="font-bold text-sm text-slate-900 dark:text-slate-100">85%</span>
+</div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">Healthy</h3>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">42 Accounts</p>
+</div>
+<div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#1c1f27] p-5 shadow-sm flex flex-col items-center justify-center text-center">
+<div class="size-14 rounded-full border-[5px] border-amber-500/20 flex items-center justify-center mb-3 relative">
+<svg class="absolute inset-0 size-full -rotate-90 transform" viewBox="0 0 100 100">
+<circle class="text-amber-500" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="248.8" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<span class="font-bold text-sm text-slate-900 dark:text-slate-100">12%</span>
+</div>
+<h3 class="text-sm font-bold text-slate-900 dark:text-slate-100">At Risk</h3>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">6 Accounts</p>
+</div>
+</div>
+</section>
+</main>
+<nav class="absolute bottom-0 w-full flex justify-between border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#111318]/95 backdrop-blur-md px-6 pb-8 pt-4 z-40">
+<a class="flex flex-col items-center justify-center gap-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">home</span>
+<span class="text-[10px] font-semibold tracking-wide">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">calendar_month</span>
+<span class="text-[10px] font-semibold tracking-wide">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1.5 text-primary" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="text-[10px] font-semibold tracking-wide">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">
+<span class="material-symbols-outlined text-[26px]">settings</span>
+<span class="text-[10px] font-semibold tracking-wide">Settings</span>
+</a>
+</nav>
+</div>
+
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SalesFlow AI - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col antialiased">
+<header class="sticky top-0 z-50 flex items-center justify-between p-4 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-sm">
+                S
+            </div>
+<h1 class="text-xl font-bold tracking-tight">SalesFlow AI</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-xl">search</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<section class="p-4">
+<h2 class="text-lg font-bold mb-3">Today at a Glance</h2>
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-start z-10">
+<div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                            Upcoming Next
+                        </span>
+<h3 class="text-xl font-bold">Acme Corp Pitch</h3>
+</div>
+</div>
+<div class="flex flex-col gap-2 z-10 text-sm text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>10:00 AM - 11:30 AM</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span>123 Business Pkwy, Suite 100</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span>Jane Doe (CEO), John Smith (CTO)</span>
+</div>
+</div>
+<div class="flex gap-3 mt-2 z-10">
+<button class="flex-1 bg-primary text-white py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+                        Directions
+                    </button>
+<button class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-2.5 px-4 rounded-lg font-medium text-sm flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">notes</span>
+                        Prep Notes
+                    </button>
+</div>
+</div>
+</section>
+<section class="pt-2 pb-4">
+<div class="px-4 mb-3">
+<h2 class="text-lg font-bold">Quick Actions</h2>
+</div>
+<div class="flex overflow-x-auto gap-3 px-4 pb-2 snap-x hide-scrollbar" style="scrollbar-width: none; -ms-overflow-style: none;">
+<button class="snap-start shrink-0 w-32 bg-primary/10 dark:bg-primary/20 hover:bg-primary/20 dark:hover:bg-primary/30 border border-primary/20 dark:border-primary/30 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-colors">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined">mic</span>
+</div>
+<span class="text-sm font-medium text-primary">Record Note</span>
+</button>
+<button class="snap-start shrink-0 w-32 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-colors shadow-sm">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center">
+<span class="material-symbols-outlined">event</span>
+</div>
+<span class="text-sm font-medium">Add Meeting</span>
+</button>
+<button class="snap-start shrink-0 w-32 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-colors shadow-sm">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<span class="text-sm font-medium">New Client</span>
+</button>
+<button class="snap-start shrink-0 w-32 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl p-4 flex flex-col items-center justify-center gap-2 transition-colors shadow-sm">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center">
+<span class="material-symbols-outlined">task</span>
+</div>
+<span class="text-sm font-medium">Add Task</span>
+</button>
+</div>
+</section>
+<section class="p-4">
+<div class="flex justify-between items-end mb-4">
+<h2 class="text-lg font-bold">Recent Activity</h2>
+<a class="text-sm text-primary font-medium hover:underline" href="#">View All</a>
+</div>
+<div class="flex flex-col gap-3">
+<div class="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">handshake</span>
+</div>
+<div>
+<h4 class="font-semibold text-sm">TechCorp Q3 Review</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Yesterday, 2:00 PM</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded p-3 mt-2 border border-slate-100 dark:border-slate-800">
+<p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+<span class="font-medium text-slate-800 dark:text-slate-200">AI Summary:</span> Client expressed strong interest in the enterprise tier. Main concern is migration timeline. Follow up with case studies next week.
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">call</span>
+</div>
+<div>
+<h4 class="font-semibold text-sm">Initial Call - Globex</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Tuesday, 10:30 AM</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded p-3 mt-2 border border-slate-100 dark:border-slate-800">
+<p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+<span class="font-medium text-slate-800 dark:text-slate-200">AI Summary:</span> Qualified lead. Budget approved for Q4. Looking for automated workflow solutions. Scheduled demo for next Friday.
+                        </p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm border border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+</div>
+<div>
+<h4 class="font-semibold text-sm">Lunch w/ Initech CEO</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">Monday, 12:00 PM</p>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 dark:bg-slate-800/50 rounded p-3 mt-2 border border-slate-100 dark:border-slate-800">
+<p class="text-sm text-slate-600 dark:text-slate-300 line-clamp-2">
+<span class="font-medium text-slate-800 dark:text-slate-200">AI Summary:</span> Relationship building. Discussed recent industry shifts. Open to re-evaluating our contract early next year. No immediate action required.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 w-full flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-2 pb-6 pt-3 z-50">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1">home</span>
+</div>
+<p class="text-[10px] font-medium">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+<p class="text-[10px] font-medium">Clients</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+</div>
+<p class="text-[10px] font-medium">Record</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">calendar_today</span>
+</div>
+<p class="text-[10px] font-medium">Calendar</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">insights</span>
+</div>
+<p class="text-[10px] font-medium">Insights</p>
+</a>
+</nav>
+
+</body></html>

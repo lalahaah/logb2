@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Client Directory List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col justify-between">
+<div class="flex-1 flex flex-col w-full max-w-md mx-auto overflow-x-hidden relative">
+<div class="flex items-center p-4 pb-2 justify-between sticky top-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur z-10 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 justify-start">
+<div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+</div>
+<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em]">Clients</h2>
+</div>
+<div class="flex items-center gap-1 justify-end">
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-primary bg-transparent hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">add</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-10 w-10 text-slate-600 dark:text-slate-400 bg-transparent hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-3">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full bg-slate-200 dark:bg-slate-800 focus-within:ring-2 focus-within:ring-primary/50 transition-all">
+<div class="flex items-center justify-center pl-4 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-400 px-3 text-base" placeholder="Search clients" type="text"/>
+</div>
+</label>
+</div>
+<div class="flex gap-2 px-4 py-2 overflow-x-auto no-scrollbar scroll-smooth">
+<button class="flex h-8 shrink-0 items-center justify-center rounded-full bg-primary text-white px-4">
+<span class="text-sm font-medium">All</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+<span class="text-sm font-medium">Ready to Close</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-4 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+<span class="text-sm font-medium">Follow-up</span>
+</button>
+</div>
+<div class="flex flex-col px-4 py-2 gap-3 pb-24">
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Initials JD avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMyIfKqisN5o7bGNO67rEyF4ZpcFtBMJhWAhqQN8-3hvzS5fDEiVwINjWoi0UIeNYCwbkPvst0l_mUBZ71cIY8EQasp97EqkJq6PfTOMz6P6SYX0W5QE8U4wTQwX2CSQFXtYaE2PZ-STgyZJSVEUJSo3I7E37PzJbXzZn1qak6M3BfwGDhmSyxX8wplgCtrHwWrQUQJMGrafNm5L1863p99HjeHJjl26u2MDvjEfuaCSclMtp__86B-87kttbc-r6lvqVPPMPaPoE");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-base font-semibold leading-normal truncate">John Doe</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal truncate">Acme Corp</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                        Ready to Close
+                    </span>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Initials SJ avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBufytvb4a27bLGS8-gQrpI207AOfF4GsWlQSyjXVfaEP9V9vKmMe7euMrmwSBGDzvDG9vwrZVrZqzoWC5m-muvJ-1a-1lQxFyGWIN3cyqrHgDrK0qWJiE9cQNSj3R_P9s_4lmG4yHiLHAlcFlHe7ul5oPaascqX4jDLacy7MkLPIzGQS1T9meq_aq1P37EjdW6K0L8mZR40TlAGzL3F3pnJP9fc43nW_PpJCnxPnNaPjABzYRVHsbZI6QBXi2ymFoJRBpRfEKso-s");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-base font-semibold leading-normal truncate">Sarah Jenkins</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal truncate">TechNova Inc.</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+                        Follow-up
+                    </span>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Initials MR avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAamC-GsHNJMOHCyHQHVVS9pefoZ0O6vIGRFNUhN4K7Q32F0-8kXcJDtnfuKgj8z2vP-3orsSMG0fPZEA3o-Um3C9U1awR-QoZmPwrWrQ92O87IflX_xd7q3W9hx7iE2-iiNKxQmq5eD4CcORX6-ky-Y6kMFliEwxs4lzN69dXjdXKO4QbV5UqugvLZLGKss9gQziG3maY7tEX8mbmYqmTyoViVtZYtx_XhdyugWmnfKuxZTMVtPoSeteNhuwbi4ESwBDsjeEodVhQ");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-base font-semibold leading-normal truncate">Michael Ross</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal truncate">Pearson Hardman</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">
+                        Nurture
+                    </span>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-12 w-12 shrink-0 border border-slate-200 dark:border-slate-700" data-alt="Initials EL avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNzFYzh5vBIo-VzSeII7OlE5gMyESfkU1_BzP72A7k8z04qU03kqg8FaHwV5_oUAwJ3z549Cp4MXRrXszBzh_OVHXrMJPiYwxt_01aK861BkrYqbjBcIus6Z5UtGgkAxnG0B857LZ4JI4rpfKOn0zZVQfnsXe_W8c5a4ERvrLXphFIwI2fUPBvjLq0iPn5ncTKi691-uT5fzdqEB8UDCzSt4uXj3D1PSzIneuoGGNAQqGc6We2dpdrv6tmyidwuZ1HlaCPrngzMZw");'></div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="text-base font-semibold leading-normal truncate">Emma Lewis</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal truncate">Global Logistics</p>
+</div>
+<div class="shrink-0 flex flex-col items-end gap-1">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400">
+                        Ready to Close
+                    </span>
+<span class="material-symbols-outlined text-slate-400 text-lg">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 w-full max-w-md left-1/2 -translate-x-1/2 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 pb-safe pt-2 px-4 z-50">
+<div class="flex justify-between items-center h-14 pb-2">
+<a class="flex flex-col items-center justify-center w-full text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full text-primary" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[10px] font-medium">Clients</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">calendar_today</span>
+<span class="text-[10px] font-medium">Meetings</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl mb-1">mic</span>
+<span class="text-[10px] font-medium">Dictate</span>
+</a>
+</div>
+</div>
+</body></html>
